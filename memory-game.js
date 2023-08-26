@@ -8,6 +8,7 @@ let restart = document.querySelector("#restart-button");
 if (matchNumCount === 10) {
   whereImgs.innerText = "Congrats! You have matched them all";
   whereImgs.classList.add("text-after-all-match");
+  start();
 } else if (clicksLeftCount == 0) {
   alert("You do not have any clicks left! Please Restart!");
 } else {
