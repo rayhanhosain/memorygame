@@ -1,56 +1,59 @@
 const whereImgs = document.querySelector("#where-imgs");
 let matchNum = document.querySelector("#match-num");
 let clicksLeft = document.querySelector("#clicks-left-count");
-
+let matchNumCount;
+let clicksLeftCount;
 let restart = document.querySelector("#restart-button");
 
-function start() {
-  whereImgs.innerText = "";
-  let matchNumCount = 0;
-  matchNum.innerText = matchNumCount;
-  let clicksLeftCount = 100;
-  clicksLeft.innerText = clicksLeftCount;
+if (matchNumCount === 10) {
+  whereImgs.innerText = "Congrats! You have matched them all";
+  whereImgs.classList.add("text-after-all-match");
+} else if (clicksLeftCount == 0) {
+  alert("You do not have any clicks left! Please Restart!");
+} else {
+  function start() {
+    whereImgs.innerText = "";
+    matchNumCount = 0;
+    matchNum.innerText = matchNumCount;
+    clicksLeftCount = 6;
+    clicksLeft.innerText = clicksLeftCount;
 
-  const images = [
-    { nm: "umbrella", imgLink: "./image/umbrella.jpg" },
-    { nm: "flower", imgLink: "./image/flower.jpg" },
-    { nm: "fruits", imgLink: "./image/fruits.jpg" },
-    { nm: "glass", imgLink: "./image/glass.jpg" },
-    { nm: "guava", imgLink: "./image/guava.jpg" },
-    { nm: "light", imgLink: "./image/light.jpg" },
-    { nm: "sky", imgLink: "./image/sky.jpg" },
-    { nm: "tomato", imgLink: "./image/tomato.jpg" },
-    { nm: "tree", imgLink: "./image/tree.jpg" },
-    { nm: "tree-river", imgLink: "./image/tree-river.jpg" },
-    { nm: "umbrella", imgLink: "./image/umbrella.jpg" },
-    { nm: "flower", imgLink: "./image/flower.jpg" },
-    { nm: "fruits", imgLink: "./image/fruits.jpg" },
-    { nm: "glass", imgLink: "./image/glass.jpg" },
-    { nm: "guava", imgLink: "./image/guava.jpg" },
-    { nm: "light", imgLink: "./image/light.jpg" },
-    { nm: "sky", imgLink: "./image/sky.jpg" },
-    { nm: "tomato", imgLink: "./image/tomato.jpg" },
-    { nm: "tree", imgLink: "./image/tree.jpg" },
-    { nm: "tree-river", imgLink: "./image/tree-river.jpg" },
-  ];
+    const images = [
+      { nm: "umbrella", imgLink: "./image/umbrella.jpg" },
+      { nm: "flower", imgLink: "./image/flower.jpg" },
+      { nm: "fruits", imgLink: "./image/fruits.jpg" },
+      { nm: "glass", imgLink: "./image/glass.jpg" },
+      { nm: "guava", imgLink: "./image/guava.jpg" },
+      { nm: "light", imgLink: "./image/light.jpg" },
+      { nm: "sky", imgLink: "./image/sky.jpg" },
+      { nm: "tomato", imgLink: "./image/tomato.jpg" },
+      { nm: "tree", imgLink: "./image/tree.jpg" },
+      { nm: "tree-river", imgLink: "./image/tree-river.jpg" },
+      { nm: "umbrella", imgLink: "./image/umbrella.jpg" },
+      { nm: "flower", imgLink: "./image/flower.jpg" },
+      { nm: "fruits", imgLink: "./image/fruits.jpg" },
+      { nm: "glass", imgLink: "./image/glass.jpg" },
+      { nm: "guava", imgLink: "./image/guava.jpg" },
+      { nm: "light", imgLink: "./image/light.jpg" },
+      { nm: "sky", imgLink: "./image/sky.jpg" },
+      { nm: "tomato", imgLink: "./image/tomato.jpg" },
+      { nm: "tree", imgLink: "./image/tree.jpg" },
+      { nm: "tree-river", imgLink: "./image/tree-river.jpg" },
+    ];
 
-  images.sort(() => {
-    return 0.5 - Math.random();
-  });
-  console.log(images);
+    images.sort(() => {
+      return 0.5 - Math.random();
+    });
+    console.log(images);
 
-  let arrOfImgNum = [];
+    let arrOfImgNum = [];
 
-  if (matchNumCount === 10) {
-    whereImgs.innerText = "Congrats! You have matched them all";
-    whereImgs.classList.add("text-after-all-match");
-  } else {
     images.forEach((obj, imgNum) => {
       const singleImage = document.createElement("img");
       singleImage.src = "./image/question-mark.jpg";
       singleImage.dataset.imgNum = imgNum;
       let singleImageField = whereImgs.appendChild(singleImage);
-      if (clicksLeftCount !== 0) {
+      if (clicksLeftCount > 0) {
         singleImageField.addEventListener("click", () => {
           clicksLeftCount--;
           clicksLeft.innerText = clicksLeftCount;
@@ -92,8 +95,6 @@ function start() {
             }
           }
         });
-      } else if (clicksLeftCount === 0) {
-        alert("You do not have any clicks left! Please Restart!");
       }
     });
   }
