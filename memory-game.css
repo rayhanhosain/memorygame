@@ -1,0 +1,17 @@
+body {
+    background-color: rgb(63, 45, 48);
+    color: rgb(230, 213, 213);
+}
+img {
+    width: 100px;
+    border: 2px solid black;
+    margin-top: -4px;
+}
+#where-imgs {
+    position: relative;
+    margin-top: 10px;
+    max-width: 600px;
+    height: auto;
+    margin-left: 10%;
+    
+}
