@@ -48,7 +48,7 @@ if (matchNumCount === 10) {
     console.log(images);
 
     let arrOfImgNum = [];
-
+// it's not understandable, what you meant to achieve in this game. so comment purpose of functions here, so that it can be understood, and a readme file.
     images.forEach((obj, imgNum) => {
       const singleImage = document.createElement("img");
       singleImage.src = "./image/question-mark.jpg";
