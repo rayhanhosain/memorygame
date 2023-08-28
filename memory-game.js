@@ -5,13 +5,19 @@ let matchNumCount;
 let clicksLeftCount;
 let restart = document.querySelector("#restart-button");
 
+
+// this if condition is not working as i wanted. i wanted this to check wheter all the images are matched. If so, I wanted all the images to be removed and a text of compeletion to be shown. But it is not working as I wanted.
 if (matchNumCount === 10) {
   whereImgs.innerText = "Congrats! You have matched them all";
   whereImgs.classList.add("text-after-all-match");
   start();
+
+  //i wanted clickLeftCount to not becoming less than 0. If i became 0, i wanted an alert to be displaed. But it is not working.
 } else if (clicksLeftCount == 0) {
   alert("You do not have any clicks left! Please Restart!");
 } else {
+
+  //i put this function so that i can restart the game later clicking on the restart button
   function start() {
     whereImgs.innerText = "";
     matchNumCount = 0;
@@ -19,6 +25,7 @@ if (matchNumCount === 10) {
     clicksLeftCount = 6;
     clicksLeft.innerText = clicksLeftCount;
 
+    //this is an array where names and links of images are present.
     const images = [
       { nm: "umbrella", imgLink: "./image/umbrella.jpg" },
       { nm: "flower", imgLink: "./image/flower.jpg" },
@@ -42,6 +49,7 @@ if (matchNumCount === 10) {
       { nm: "tree-river", imgLink: "./image/tree-river.jpg" },
     ];
 
+    //this sorts the images array in random order
     images.sort(() => {
       return 0.5 - Math.random();
     });
@@ -68,10 +76,10 @@ if (matchNumCount === 10) {
             singleImage.src = images[imgNum].imgLink;
             arrOfImgNum.push(imgNum);
 
-            //this checks whether the length of arrOfImgNumber is 1 and the index of the clicked image 
-            //is the same as that of the previous click. That means, this whether one previous click was 
-            //made and whther it is not the same image that was clicked before. If one previous click 
-            //was made and it is the not the same indexed field as before, this condition applies
+            /*this checks whether the length of arrOfImgNumber is 1 and the index of the clicked image 
+            is the same as that of the previous click. That means, this whether one previous click was 
+            made and whther it is not the same image that was clicked before. If one previous click 
+            was made and it is the not the same indexed field as before, this condition applies*/
           } else if (arrOfImgNum.length === 1 && arrOfImgNum[0] !== imgNum) {
             singleImage.src = images[imgNum].imgLink;
             arrOfImgNum.push(imgNum);
@@ -83,6 +91,7 @@ if (matchNumCount === 10) {
             let scndClkdImgDiv = document.querySelector(
               `img[data-img-num="${imgNumOf2ndClk}"]`
             );
+            //this checks the  1st clicked images name matches with the 2nd clicked image form the images array
             if (images[imgNum].nm === images[imgNumOf1stClk].nm) {
               setTimeout(() => {
                 alert("Congrats! It is a match");
