@@ -100,6 +100,8 @@ if (matchNumCount === 10) {
               matchNum.innerText = matchNumCount;
               setTimeout(() => {
                 arrOfImgNum = [];
+
+                //if the names matches of the two clicks, the images are replaced by tik.jpg.
                 firstClkdImgDiv.src = "./image/tik.jpg";
                 scndClkdImgDiv.src = "./image/tik.jpg";
               }, 500);
@@ -122,4 +124,5 @@ if (matchNumCount === 10) {
 }
 start();
 
+//click event listener to restart button so that start function is called and the game restarts
 restart.addEventListener("click", start);
