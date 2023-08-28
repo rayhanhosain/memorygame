@@ -49,6 +49,7 @@ if (matchNumCount === 10) {
 
     let arrOfImgNum = [];
 // it's not understandable, what you meant to achieve in this game. so comment purpose of functions here, so that it can be understood, and a readme file.
+   //images object will be looped through one by one and for each object, one img tag will be made where the images will be put serially after the random sort done previously
     images.forEach((obj, imgNum) => {
       const singleImage = document.createElement("img");
       singleImage.src = "./image/question-mark.jpg";
